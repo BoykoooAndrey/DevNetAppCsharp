@@ -16,14 +16,11 @@ namespace Sem2Task2
             IPEndPoint ep = new IPEndPoint(IPAddress.Any, 0);
             UdpClient udpClient = new UdpClient(16874);
             Console.WriteLine("Сервер ожидает сообщение");
-            while (flag)
             {
+                
 
-
-				byte[] buffer = udpClient.Receive(ref ep);
+                byte[] buffer = udpClient.Receive(ref ep);
                 string data = Encoding.UTF8.GetString(buffer);
-
-
                 Thread tr = new Thread(() =>
                 {
                     Message msg = Message.fromJson(data);
@@ -44,16 +41,15 @@ namespace Sem2Task2
                     {
 						responseMsg = new Message("Server", "Message accept on serv!");
 						responseMsgJs = responseMsg.toJson();
-						Console.WriteLine(msg.ToString());
-						responseDate = Encoding.UTF8.GetBytes(responseMsgJs);
-						udpClient.Send(responseDate, ep);
+                    Console.WriteLine(msg.ToString());
+                    udpClient.Send(responseDate, ep);
 					}
-				});
+                }); 
 
 				if (flag)
                 {
 
-					tr.Start();
+                tr.Start();
                     
 
 				}
@@ -61,7 +57,7 @@ namespace Sem2Task2
                 {
                     return;
                 }
-			}
+            }
         }
     }
 }

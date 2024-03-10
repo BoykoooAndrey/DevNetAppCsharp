@@ -27,7 +27,7 @@ namespace Sem2
                     var tr = new Thread(() =>
                     {
                         Ping p = new Ping();
-                        PingReply pingReply = p.Send   (ip);
+                        PingReply pingReply = p.Send(ip);
                         pings.Add(ip, pingReply.RoundtripTime);
 
                     });

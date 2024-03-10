@@ -15,8 +15,7 @@ namespace Sem2Task2
                 for (int i = 0; i < 10; i++)
                 {
                     
-                    Client.SendMsg($"{args[0]} {i}");
-                    
+                        Client.SendMsg($"{args[0]} {i}");
                     
                 }
                 
